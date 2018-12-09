@@ -1,21 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+import firebase from 'firebase';
 
-export default class App extends React.Component {
+import { Header } from './src/components/common';
+
+
+class App extends Component {
+  componentDidMount() {
+    firebase.initializeApp({
+        apiKey: 'AIzaSyAmvmtJNVUp2IyFFawOIoUnfCXlinfpp2c',
+        authDomain: 'authentication-d70cb.firebaseapp.com',
+        databaseURL: 'https://authentication-d70cb.firebaseio.com',
+        projectId: 'authentication-d70cb',
+        storageBucket: '',
+        messagingSenderId: '932351825334'
+    })
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+      <View>
+        <Header headerText='Authentication' />
+        <Text>An app</Text>
       </View>
     );
   }
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
